@@ -102,8 +102,69 @@ public class Colosseum {
      * (Look, we can return objects too!)
      */
     public static Pokemon buildPokemon() {
-        Pokemon returnPokemon = null;
-        return returnPokemon;
+
+        Scanner scan = new Scanner(System.in);
+        Pokemon tempPokemon = new Pokemon();
+
+        System.out.println("Enter name");
+        String name = scan.nextLine();
+        tempPokemon.setName(name);
+
+
+        System.out.println("Enter the type: ");
+        System.out.println("1 - Electric Pokemon");
+        System.out.println("2 - Fire Pokemon");
+        System.out.println("3 - Water Pokemon");
+        int type = scan.nextInt();
+        while (type != 1 && type != 2 && type != (2 + 1)) {
+            System.out.println("This is not valid. Please enter again: ");
+            type = scan.nextInt();
+        }
+        if (type == 1) {
+            tempPokemon.pokeType = Pokemon.PokemonType.ELECTRIC;
+        }
+        if (type == 2) {
+            tempPokemon.pokeType = Pokemon.PokemonType.FIRE;
+        }
+        if (type == 2 + 1) {
+            tempPokemon.pokeType = Pokemon.PokemonType.WATER;
+        }
+        tempPokemon.setType(type);
+
+
+        System.out.println("Enter HP: ");
+        int hp = scan.nextInt();
+        while (hp < 1 || hp > MAX_HIT_POINTS) {
+            System.out.println("This is not valid. Please enter again: ");
+            hp = scan.nextInt();
+        }
+        tempPokemon.setHitPoints(hp);
+
+        System.out.println("Split 50 points between defense and attack");
+        System.out.println("Enter Defense Level: ");
+        int defense = scan.nextInt();
+        while (defense < 1) {
+            System.out.println("This is not valid. Please enter again: ");
+            defense = scan.nextInt();
+        }
+
+        System.out.println("Enter Attack Level: ");
+        int attack = scan.nextInt();
+        while (attack < 1) {
+            System.out.println("This is not valid. Please enter again: ");
+            attack = scan.nextInt();
+        }
+
+
+        while (attack + defense > MAX_HIT_POINTS) {
+            System.out.println("Please re-enter attack and defense into two lines as their sum can't be higher than 50: ");
+            attack = scan.nextInt();
+            defense = scan.nextInt();
+        }
+        tempPokemon.setAttackLevel(hp);
+        tempPokemon.setDefenseLevel(hp);
+
+        return tempPokemon;
     }
 
     /**

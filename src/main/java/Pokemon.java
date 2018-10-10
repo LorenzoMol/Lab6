@@ -67,6 +67,11 @@ public class Pokemon {
     private String name;
 
     /**
+     *
+     */
+    private int type;
+
+    /**
      * A 6 sided dice used to calculate attack damage.
      */
     public Dice d6;
@@ -91,7 +96,9 @@ public class Pokemon {
         this.attackLevel = 0;
         this.defenseLevel = 0;
         this.name = "";
+        this.type = 0;
     }
+
 
     /**
      * Get the attack level of the pokemon.
@@ -150,6 +157,12 @@ public class Pokemon {
     public void setName(final String theName) {
         this.name = theName;
     }
+
+    /** */
+    public int getType() {return this.type; }
+
+    /** */
+    public void setType(int setType) { type = setType; }
 
 
 
